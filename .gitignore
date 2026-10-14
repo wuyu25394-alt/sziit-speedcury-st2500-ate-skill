@@ -1,0 +1,27 @@
+# Windows 系统文件
+Thumbs.db
+ehthumbs.db
+desktop.ini
+Desktop.ini
+
+# macOS / Linux
+.DS_Store
+.AppleDouble
+*~
+
+# Office 临时锁文件
+~$*.docx
+~$*.xlsx
+~$*.pptx
+
+# 编辑器与 IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 临时与日志
+*.tmp
+*.log
+*.bak
