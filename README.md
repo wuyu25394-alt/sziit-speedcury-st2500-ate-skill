@@ -148,6 +148,20 @@ git pull mirror main
 
 > 同样适用于技能安装目录：`git -C "$env:USERPROFILE\.dsh\skills\ic-testing-notes" pull mirror main`
 
+#### 排错：推送报 `Could not connect to server ... proxy 127.0.0.1`
+
+说明本地代理（Clash / FlClash 的 `127.0.0.1:7890`）**当前没在运行**。两条路：
+
+```powershell
+# A. 在 Clash / FlClash 里把代理打开，然后正常推送
+git push origin main
+
+# B. 代理没开、但 github.com 恰好能直连时，临时绕开代理配置推送
+git -c http.https://github.com.proxy= push origin main
+```
+
+> 代理是否可用、github.com 能否直连，**随网络环境变化**（实测同一台机器一天内两种状态都出现过）。所以上面那两条命令都记着；`mirror` 远程不受影响，**读取永远不需要代理**。
+
 ---
 
 ## 二、给人读：内容导航
