@@ -69,6 +69,85 @@ Remove-Item -Recurse -Force "$env:USERPROFILE\.dsh\skills\ic-testing-notes"
 - 「我的漏电流测试结果全是几百微安，可能是什么问题？」
 - 「用这道题考我：直流参数测试都有哪些项，各自的测试条件是什么？」
 
+### 1.6 不走代理访问（GitHub 直连不通时）
+
+**背景**：`github.com` 在国内常直连不通（git 会报 `Connection was reset`）。以下方式**实测可用**，按推荐度排序。
+
+#### 方式 A（最推荐，长期稳定）：镜像到 Gitee 等国内托管
+
+Gitee 直连无阻。把仓库推一份过去后，`clone` / `pull` / `push` **全部不需要代理**：
+
+```powershell
+# 1) 先在 https://gitee.com 新建一个空仓库（不要勾选"使用 README 初始化"）
+# 2) 加一个国内远程并推送
+cd D:\集成电路测试
+git remote add gitee https://gitee.com/<你的用户名>/ic-testing-notes.git
+git push -u gitee main
+
+# 3) 之后从国内源克隆，不需要任何代理
+git clone https://gitee.com/<你的用户名>/ic-testing-notes.git
+```
+
+日常同步：
+
+```powershell
+git pull gitee main      # 从国内源拉（不需要代理）
+git push gitee main      # 推到国内源（不需要代理）
+git push origin main     # 推回 GitHub（需要代理）
+```
+
+> **GitCode**（`gitcode.com`）同样直连可用，做法完全一致。
+
+#### 方式 B（零配置，立刻可用）：公共反代作为**只读**远程
+
+```powershell
+# 直接克隆
+git clone https://ghproxy.net/https://github.com/wuyu25394-alt/ic-testing-notes-groupA.git
+# 备选反代：https://ghfast.top/https://github.com/wuyu25394-alt/ic-testing-notes-groupA.git
+```
+
+加成第二个远程，之后拉取都走反代：
+
+```powershell
+git remote add mirror https://ghproxy.net/https://github.com/wuyu25394-alt/ic-testing-notes-groupA.git
+git remote set-url --push mirror no_push    # ★ 必须：禁止经第三方推送
+git pull mirror main
+```
+
+> ⚠️ **只用于读。** 公共反代会看到你的请求内容；**绝不要通过它推送**——那等于把你的 GitHub 凭据交给第三方。上面第二行的 `--push no_push` 就是为此。
+> 反代是第三方服务，**可用性无保证**，随时可能失效或限速。长期稳定请用方式 A。
+
+#### 方式 C（单文件浏览/下载）：jsDelivr CDN
+
+不需要 git，直接在浏览器取任意文件：
+
+```
+https://cdn.jsdelivr.net/gh/wuyu25394-alt/ic-testing-notes-groupA@main/README.md
+https://cdn.jsdelivr.net/gh/wuyu25394-alt/ic-testing-notes-groupA@main/SKILL.md
+https://cdn.jsdelivr.net/gh/wuyu25394-alt/ic-testing-notes-groupA@main/01-理论基础/1.4-术语速查表（含SMU详解）.md
+```
+
+#### 实测结论（不走代理）
+
+| 可直连 | 不可直连 |
+|---|---|
+| `raw.githubusercontent.com`、**Gitee**、**GitCode**、**`cdn.jsdelivr.net`**、**`ghproxy.net`**、**`ghfast.top`** | **`github.com` 本体**、`gh-proxy.com`、`github.moeyy.xyz`、`bgithub.xyz`、gitmirror 系（DNS 解析失败） |
+
+#### 本仓库已配好的远程
+
+| 远程名 | 地址 | 用途 | 需要代理 |
+|---|---|---|---|
+| `origin` | `github.com/wuyu25394-alt/ic-testing-notes-groupA` | 主仓库，可拉可推 | **需要** |
+| `mirror` | `ghproxy.net/...` | **只读**镜像，`fetch` / `pull` | **不需要**（push 已禁用） |
+
+一条命令拉最新（不需要代理）：
+
+```powershell
+git pull mirror main
+```
+
+> 同样适用于技能安装目录：`git -C "$env:USERPROFILE\.dsh\skills\ic-testing-notes" pull mirror main`
+
 ---
 
 ## 二、给人读：内容导航
