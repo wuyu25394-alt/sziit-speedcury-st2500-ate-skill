@@ -23,7 +23,7 @@
 ### 1.1 DeepSeek Harness（DSH）
 
 ```powershell
-git clone https://github.com/wuyu25394-alt/ic-testing-notes-groupA "$env:USERPROFILE\.dsh\skills\ic-testing-notes"
+git clone https://github.com/wuyu25394-alt/sziit-speedcury-st2500-ate-skill "$env:USERPROFILE\.dsh\skills\ic-testing-notes"
 ```
 
 装完**新建一个会话**（或重启 DSH），技能目录里就会出现 `ic-testing-notes`，描述为"集成电路测试（ATE）知识库与实操手册…"。
@@ -33,7 +33,7 @@ git clone https://github.com/wuyu25394-alt/ic-testing-notes-groupA "$env:USERPRO
 `SKILL.md` + YAML frontmatter（`name` / `description`）是通用的 Agent Skills 约定。DSH 除此之外还会扫描 `~/.agents/skills`；其他工具的技能目录请以各自文档为准（例如 Claude Code 用 `~/.claude/skills`）：
 
 ```powershell
-git clone https://github.com/wuyu25394-alt/ic-testing-notes-groupA "$env:USERPROFILE\.agents\skills\ic-testing-notes"
+git clone https://github.com/wuyu25394-alt/sziit-speedcury-st2500-ate-skill "$env:USERPROFILE\.agents\skills\ic-testing-notes"
 ```
 
 ### 1.3 验证安装
@@ -102,14 +102,14 @@ git push origin main     # 推回 GitHub（需要代理）
 
 ```powershell
 # 直接克隆
-git clone https://ghproxy.net/https://github.com/wuyu25394-alt/ic-testing-notes-groupA.git
-# 备选反代：https://ghfast.top/https://github.com/wuyu25394-alt/ic-testing-notes-groupA.git
+git clone https://ghproxy.net/https://github.com/wuyu25394-alt/sziit-speedcury-st2500-ate-skill.git
+# 备选反代：https://ghfast.top/https://github.com/wuyu25394-alt/sziit-speedcury-st2500-ate-skill.git
 ```
 
 加成第二个远程，之后拉取都走反代：
 
 ```powershell
-git remote add mirror https://ghproxy.net/https://github.com/wuyu25394-alt/ic-testing-notes-groupA.git
+git remote add mirror https://ghproxy.net/https://github.com/wuyu25394-alt/sziit-speedcury-st2500-ate-skill.git
 git remote set-url --push mirror no_push    # ★ 必须：禁止经第三方推送
 git pull mirror main
 ```
@@ -122,9 +122,9 @@ git pull mirror main
 不需要 git，直接在浏览器取任意文件：
 
 ```
-https://cdn.jsdelivr.net/gh/wuyu25394-alt/ic-testing-notes-groupA@main/README.md
-https://cdn.jsdelivr.net/gh/wuyu25394-alt/ic-testing-notes-groupA@main/SKILL.md
-https://cdn.jsdelivr.net/gh/wuyu25394-alt/ic-testing-notes-groupA@main/01-理论基础/1.4-术语速查表（含SMU详解）.md
+https://cdn.jsdelivr.net/gh/wuyu25394-alt/sziit-speedcury-st2500-ate-skill@main/README.md
+https://cdn.jsdelivr.net/gh/wuyu25394-alt/sziit-speedcury-st2500-ate-skill@main/SKILL.md
+https://cdn.jsdelivr.net/gh/wuyu25394-alt/sziit-speedcury-st2500-ate-skill@main/01-理论基础/1.4-术语速查表（含SMU详解）.md
 ```
 
 #### 实测结论（不走代理）
@@ -137,7 +137,7 @@ https://cdn.jsdelivr.net/gh/wuyu25394-alt/ic-testing-notes-groupA@main/01-理论
 
 | 远程名 | 地址 | 用途 | 需要代理 |
 |---|---|---|---|
-| `origin` | `github.com/wuyu25394-alt/ic-testing-notes-groupA` | 主仓库，可拉可推 | **需要** |
+| `origin` | `github.com/wuyu25394-alt/sziit-speedcury-st2500-ate-skill` | 主仓库，可拉可推 | **需要** |
 | `mirror` | `ghproxy.net/...` | **只读**镜像，`fetch` / `pull` | **不需要**（push 已禁用） |
 
 一条命令拉最新（不需要代理）：
@@ -302,7 +302,7 @@ git -c http.https://github.com.proxy= push origin main
 本仓库根目录即技能包，`SKILL.md` 提供 AI 入口，其余是它引用的知识本体：
 
 ```
-ic-testing-notes-groupA/          ← 克隆到 skills/ 下就是这个技能
+sziit-speedcury-st2500-ate-skill/          ← 克隆到 skills/ 下就是这个技能
 ├── SKILL.md                      ← ★ 技能入口（frontmatter: name + description）
 ├── README.md                     ← 本文件（给人看）
 ├── NOTICE.md                     ← 资料来源与使用声明
@@ -359,3 +359,112 @@ ic-testing-notes-groupA/          ← 克隆到 skills/ 下就是这个技能
 - **引用或转载时请注明资料来源与权利方**，不要声称对原始内容拥有著作权；
 - 如果你是权利人，认为本仓库内容不当或超出合理引用范围，**请联系仓库所有者，会立即删除**；
 - 完整声明见 [NOTICE.md](NOTICE.md)。
+
+> ⚠️ **本仓库当前没有 `LICENSE` 文件**。没有许可证 = 默认"保留所有权利"，即**协作者在法律上并未获得修改与再分发的明确授权**。
+> 既然要拉人一起维护，建议补一份许可证（例如 **CC BY-NC 4.0**，正好对应上面的「注明来源、不得商用」）。**此项待办。**
+
+---
+
+## 八、协作与更新流程（给协作者）
+
+### 8.1 三种参与方式，先分清
+
+| 你的身份 | 能做什么 | 需要什么 |
+|---|---|---|
+| **任何人**（仓库是 public） | clone 下来当技能用、读、fork | **不需要邀请** |
+| **被邀请的协作者** | 上面的 + **直接修改并推送** | **`Write` 权限** |
+| 只想提建议 | 开 Issue / PR | 不需要权限 |
+
+> 邀请入口：仓库 **Settings → Collaborators and teams → Add people**。
+> 角色必须是 **`Write`** 才能推送；`Read` 只能看，`Triage` 只能管 issue。
+>
+> ⚠️ **`Admin` 权限请谨慎给** —— 那等于把"改仓库可见性、删仓库、加别人"的能力也交出去。
+
+### 8.2 当前分支保护状态
+
+**`main` 分支没有保护规则**（`protected: false`），所以有 `Write` 权限的人**可以直接推送，不需要走 PR**。
+
+这带来两个后果，请自觉：
+
+- ✅ 方便：改完直接推，协作者 `pull` 就能看到
+- ⚠️ 危险：**推错无法被 review 拦住**，且推坏了历史别人很难恢复
+
+**约定（建议）**：
+
+- **小改动**（错别字、补充参数、修正链接）→ 直接推 `main`
+- **大改动**（重构目录、改 `SKILL.md` 的描述、批量改限值）→ **开分支 + PR**，让至少一人看过再合
+- **绝不要** `git push --force` 到 `main`
+
+### 8.3 协作者怎么写
+
+```powershell
+# ① 首次：克隆到技能目录（同时也是你的工作副本）
+git clone https://github.com/wuyu25394-alt/sziit-speedcury-st2500-ate-skill `
+  "$env:USERPROFILE\.dsh\skills\ic-testing-notes"
+
+# ② 每次动手前先同步，避免冲突
+git -C "$env:USERPROFILE\.dsh\skills\ic-testing-notes" pull --ff-only
+
+# ③ 改文件……（笔记是 Markdown，直接编辑即可）
+
+# ④ 提交并推送
+cd "$env:USERPROFILE\.dsh\skills\ic-testing-notes"
+git add -A
+git commit -m "5.1: 补充 CD4511 课件的另一套限值口径"
+git push origin main
+```
+
+**装完/更新完记得新建会话或重启 DSH**，技能才会被重新加载。
+
+### 8.4 提交前必须检查的四件事
+
+1. **不要提交敏感信息** —— API key、token、本机绝对路径（含用户名的）、Log 里的实测截图。
+   `.gitignore` 已排除常见产物，但它拦不住你手写进去的内容。
+2. **不要提交大文件** —— 原始 PDF / CHM / 课件、工程二进制（`Test.dll`）、`node_modules`。
+   本仓库**有意不含**这些（见第六节「已知局限」）。真需要放，先问仓库所有者，并考虑 Git LFS。
+3. **保持 `SKILL.md` 的 frontmatter 完好** —— 它**必须以 `---` 作为文件第一个字符**，
+   **不要加 UTF-8 BOM**，不要在开头插空行。改坏了整个技能就加载不了。
+4. **凡是手册/课件来的数值，先声明出处** —— 本仓库的引用纪律是"标注页码/文件名可回溯"（见第七节）。
+   把图片识读的不确定值写成确定值，是最容易造成误导的一类改动。
+
+### 8.5 冲突怎么办
+
+两个人改了同一篇笔记时：
+
+```powershell
+git pull --rebase origin main     # 把你的改动接到别人之后
+
+# 有冲突时 Git 会停下来并告诉你哪些文件冲突
+# 手工改好冲突文件后：
+git add <冲突文件>
+git rebase --continue
+```
+
+**不要**用 `git push --force` 图省事 —— 那会抹掉别人的提交。
+
+### 8.6 网络：国内必须走代理
+
+`github.com` 直连不通（实测），必须开启代理（Clash / FlClash 等，本机端口 **7890**）。
+本仓库的 git 配置里已按主机名设了代理：
+
+```
+http.https://github.com.proxy = http://127.0.0.1:7890
+```
+
+**代理没开时会报**：`Could not connect to server ... proxy 127.0.0.1`
+
+三种处理方式：
+
+```powershell
+# A. 把代理软件打开（首选）
+git push origin main
+
+# B. 代理没开、但 github.com 恰好能直连时，临时绕开代理配置
+git -c http.https://github.com.proxy= push origin main
+
+# C. 长期不用代理：加 no_proxy（对当前会话生效）
+$env:no_proxy = "github.com"
+```
+
+> ⚠️ 注意：**只读镜像 `mirror`（ghproxy.net）不能用于推送**，它的 pushurl 已被设为 `no_push`。
+> 公共反代会看到你的请求内容，**绝不要通过它推送** —— 那等于把凭据交给第三方。
