@@ -27,6 +27,7 @@ ROOT_FILES = [
     "INSTALL.md",
     "CONTRIBUTING.md",
     "STYLE_GUIDE.md",
+    "KNOWN-ISSUES.md",
     "NOTICE.md",
     "SKILL.md",
     "templates/chapter-template.md",

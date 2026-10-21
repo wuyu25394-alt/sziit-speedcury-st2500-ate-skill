@@ -1,8 +1,8 @@
 blank_issues_enabled: true
 contact_links:
   - name: 写作规范
-    url: https://github.com/wuyu25394-alt/ic-testing-notes-groupA/blob/main/STYLE_GUIDE.md
+    url: https://github.com/wuyu25394-alt/sziit-speedcury-st2500-ate-skill/blob/main/STYLE_GUIDE.md
     about: 提 PR 之前先读一遍用词与排版规则
   - name: 贡献指南
-    url: https://github.com/wuyu25394-alt/ic-testing-notes-groupA/blob/main/CONTRIBUTING.md
+    url: https://github.com/wuyu25394-alt/sziit-speedcury-st2500-ate-skill/blob/main/CONTRIBUTING.md
     about: 改稿流程、自查方法与内容要求

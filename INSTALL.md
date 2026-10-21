@@ -11,7 +11,7 @@
 ### 1.1 DeepSeek Harness（DSH）
 
 ```powershell
-git clone https://github.com/wuyu25394-alt/ic-testing-notes-groupA "$env:USERPROFILE\.dsh\skills\ic-testing-notes"
+git clone https://github.com/wuyu25394-alt/sziit-speedcury-st2500-ate-skill "$env:USERPROFILE\.dsh\skills\ic-testing-notes"
 ```
 
 装完**新建一个会话**（或重启 DSH），技能目录里就会出现 `ic-testing-notes`。
@@ -21,7 +21,7 @@ git clone https://github.com/wuyu25394-alt/ic-testing-notes-groupA "$env:USERPRO
 `SKILL.md` + YAML frontmatter（`name` / `description`）是通用的 Agent Skills 约定。DSH 除此之外还会扫描 `~/.agents/skills`；其他工具的技能目录请以各自文档为准（例如 Claude Code 用 `~/.claude/skills`）：
 
 ```powershell
-git clone https://github.com/wuyu25394-alt/ic-testing-notes-groupA "$env:USERPROFILE\.agents\skills\ic-testing-notes"
+git clone https://github.com/wuyu25394-alt/sziit-speedcury-st2500-ate-skill "$env:USERPROFILE\.agents\skills\ic-testing-notes"
 ```
 
 ---
@@ -60,8 +60,8 @@ GitHub 直连不稳时，有三条路可以不用代理：
 | 方式 | 地址 | 能力 |
 |---|---|---|
 | Gitee 镜像 | 自行在 Gitee 导入本仓库 | 可读写，需注册 |
-| 公共反代 | `https://ghproxy.net/https://github.com/wuyu25394-alt/ic-testing-notes-groupA` | **只读**，可 `clone` / `pull`，不能 `push` |
-| jsDelivr CDN | `https://cdn.jsdelivr.net/gh/wuyu25394-alt/ic-testing-notes-groupA@main/` | 只读单文件，适合取某一篇 |
+| 公共反代 | `https://ghproxy.net/https://github.com/wuyu25394-alt/sziit-speedcury-st2500-ate-skill` | **只读**，可 `clone` / `pull`，不能 `push` |
+| jsDelivr CDN | `https://cdn.jsdelivr.net/gh/wuyu25394-alt/sziit-speedcury-st2500-ate-skill@main/` | 只读单文件，适合取某一篇 |
 
 > [!CAUTION]
 > 公共反代与 CDN 都是第三方服务，它们能看到你请求了什么 URL。**不要通过它们传输凭据**，也不要把 token 写进 clone 地址。

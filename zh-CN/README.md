@@ -183,7 +183,7 @@ flowchart LR
 
 ## 参与这个项目
 
-- **发现错误**：到 [Issues](https://github.com/wuyu25394-alt/ic-testing-notes-groupA/issues) 提一条，写清楚章节和原文。
+- **发现错误**：到 [Issues](https://github.com/wuyu25394-alt/sziit-speedcury-st2500-ate-skill/issues) 提一条，写清楚章节和原文。
 - **补充内容**：先读[写作规范](../STYLE_GUIDE.md)与[贡献指南](../CONTRIBUTING.md)。
 - 这本书还在长，缺图、缺例子、缺练习题的地方都欢迎补。
 

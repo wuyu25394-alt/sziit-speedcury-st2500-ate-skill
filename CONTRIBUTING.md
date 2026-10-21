@@ -75,3 +75,92 @@ python3 scripts/check_book.py
 ## 七、授权
 
 提交内容即表示同意以 [CC BY-NC-SA 4.0](LICENSE) 授权发布。请确认你有权提交这些内容。
+
+---
+
+## 八、协作与更新流程
+
+### 8.1 三种参与方式
+
+| 你的身份 | 能做什么 | 需要什么 |
+|---|---|---|
+| 任何人（仓库是 public） | clone 下来读、当技能用、fork | **不需要邀请** |
+| 被邀请的协作者 | 上面的 + 直接修改并推送 | **`Write` 权限** |
+| 只想提建议 | 开 Issue / PR | 不需要权限 |
+
+> 邀请入口：仓库 **Settings → Collaborators and teams → Add people**，角色必须是 **`Write`** 才能推送。
+> **`Admin` 权限请谨慎给**——那等于把「改可见性、删仓库、加别人」的能力也交出去。
+
+### 8.2 分支保护现状
+
+`main` 分支目前**没有保护规则**，有 `Write` 权限的人可以直接推，不必走 PR。因此约定：
+
+- **小改动**（错别字、补参数、修链接）→ 直接推 `main`
+- **大改动**（重构目录、改 `SKILL.md` 描述、批量改限值）→ **开分支 + PR**
+- **绝不** `git push --force` 到 `main`
+
+### 8.3 协作者怎么写
+
+```powershell
+# ① 首次：克隆到技能目录（同时也是工作副本）
+git clone https://github.com/wuyu25394-alt/sziit-speedcury-st2500-ate-skill `
+  "$env:USERPROFILE\.dsh\skills\ic-testing-notes"
+
+# ② 动手前先同步，避免冲突
+git -C "$env:USERPROFILE\.dsh\skills\ic-testing-notes" pull --ff-only
+
+# ③ 改文件，然后跑一遍自查
+python3 scripts/check_book.py
+
+# ④ 提交并推送
+cd "$env:USERPROFILE\.dsh\skills\ic-testing-notes"
+git add -A
+git commit -m "9: 修正 IIL 判据单位"
+git push origin main
+```
+
+装完/更新完**新建会话或重启 DSH**，技能才会重新加载。
+
+### 8.4 提交前必须检查的四件事
+
+1. **不提交敏感信息**——API key、token、含用户名的本机绝对路径、Log 里的实测截图。
+2. **不提交大文件**——原始 PDF / CHM / 课件、工程二进制（`Test.dll`）。本仓库有意不含这些；真需要放，先讨论并考虑 Git LFS。
+3. **保持 `SKILL.md` 的 frontmatter 完好**——它**必须以 `---` 作为文件第一个字符**，不加 BOM，开头不插空行。改坏了整个技能就加载不了。
+4. **手册/课件来的数值要带出处**——把图片识读的不确定值写成确定值，是最容易造成误导的一类改动。已知的口径冲突见 [KNOWN-ISSUES.md](KNOWN-ISSUES.md)。
+
+### 8.5 冲突怎么办
+
+```powershell
+git pull --rebase origin main     # 把你的改动接到别人之后
+
+# 有冲突时 Git 会停下来告诉你哪些文件冲突
+# 手工改好后：
+git add <冲突文件>
+git rebase --continue
+```
+
+不要用 `git push --force` 图省事——那会抹掉别人的提交。
+
+### 8.6 网络：国内需要代理
+
+`github.com` 直连经常不通，建议开代理。仓库的 git 配置已按主机名设了代理：
+
+```
+http.https://github.com.proxy = http://127.0.0.1:7890
+```
+
+代理没开时会报 `Could not connect to server ... proxy 127.0.0.1`，三种处理：
+
+```powershell
+# A. 把代理打开（首选）
+git push origin main
+
+# B. 代理没开、但能直连时，临时绕开代理配置
+git -c http.https://github.com.proxy= push origin main
+
+# C. 长期不用代理（对当前会话生效）
+$env:no_proxy = "github.com"
+```
+
+> [!CAUTION]
+> 只读镜像（`mirror`，走 ghproxy.net）的 pushurl 已设为 `no_push`，**不能用于推送**。公共反代会看到你的请求内容，通过它推送等于把凭据交给第三方。
