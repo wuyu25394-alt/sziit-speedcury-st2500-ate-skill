@@ -1,0 +1,11 @@
+Label,WFT,Sequence,OE1,OE2,MR,S1,S0,CP,DSR,DSL,IO0,IO1,IO2,IO3,IO4,IO5,IO6,IO7,Q0,Q7,Comment
+RST,WFT1,,0,0,0,0,0,0,0,0,X,X,X,X,X,X,X,X,H,L,异步复位 输出全0
+LOAD,WFT1,,0,0,1,1,1,1,0,0,1,1,1,1,1,1,1,1,H,L,并行置数 全1写入
+HOLD0,WFT1,,0,0,1,0,0,0,0,0,X,X,X,X,X,X,X,X,H,L,保持 应维持全1
+SHR,WFT1,,0,0,1,0,1,1,0,0,X,X,X,X,X,X,X,X,X,X,右移 DSR=0 由IO0进
+SHL,WFT1,,0,0,1,1,0,1,0,0,X,X,X,X,X,X,X,X,X,X,左移 DSL=0 由IO7进
+HOLD1,WFT1,,0,0,1,0,0,0,0,0,X,X,X,X,X,X,X,X,X,X,保持
+RST2,WFT1,,0,0,0,0,0,0,0,0,X,X,X,X,X,X,X,X,H,L,再复位 回到全0
+SHL2,WFT1,,0,0,1,1,0,1,0,1,X,X,X,X,X,X,X,X,X,X,左移 DSL=1 测左移串行入口
+SHR2,WFT1,,0,0,1,0,1,1,1,0,X,X,X,X,X,X,X,X,X,X,右移 DSR=1 测右移串行入口
+OFF,WFT1,stop,0,0,0,0,0,Z,0,0,M,M,M,M,M,M,M,M,X,X,停止 时钟回低

@@ -1,0 +1,45 @@
+name: 勘误
+description: 报告书里的错误（数值不对、说法有误、链接失效、代码跑不通）
+title: "勘误：第 X 章 —— <一句话说明>"
+labels: ["勘误"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        谢谢帮忙挑错。请尽量写清「在哪一章、原文是什么、应该是什么」。
+  - type: input
+    id: location
+    attributes:
+      label: 位置
+      description: 章节号，或者直接贴文件路径
+      placeholder: zh-CN/3-dc-tests/09-leakage/README.md
+    validations:
+      required: true
+  - type: textarea
+    id: quote
+    attributes:
+      label: 原文
+      description: 把有问题的那一段贴过来
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 应该是什么
+      description: 正确的说法或数值，以及你的依据（数据手册页码、课件页码、notes/ 里的篇目）
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: 类型
+      options:
+        - 数值或单位错误
+        - 概念或说法有误
+        - 链接失效
+        - 代码跑不通
+        - 排版或错别字
+        - 其他
+    validations:
+      required: true

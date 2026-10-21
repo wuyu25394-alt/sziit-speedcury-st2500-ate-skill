@@ -1,0 +1,34 @@
+name: 内容建议
+description: 提一个讲不清、缺例子、顺序不对、想补一章的地方
+title: "建议：<一句话说明>"
+labels: ["建议"]
+body:
+  - type: input
+    id: location
+    attributes:
+      label: 相关章节
+      description: 章节号，或者「希望新增一章讲……」
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: 现在的问题
+      description: 读到哪里卡住了，或者哪里觉得多余
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 你希望怎么改
+      description: 加一个例子、换一种讲法、拆成两章，都可以
+  - type: dropdown
+    id: audience
+    attributes:
+      label: 你读这本书的身份
+      options:
+        - 本科生 / 研究生
+        - 刚入行的测试工程师
+        - 设计与工艺工程师
+        - 老师
+        - 其他
