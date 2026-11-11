@@ -1,6 +1,6 @@
 ---
 name: ic-testing-notes
-description: 集成电路测试（ATE）知识库与实操手册，基于加速科技 ST2516/ST2500 测试平台与六个实训案例（CD4511 数字译码器、HK24C02 存储、LM358 运放、TPS73625 电源管理、HK32F031F4P6 MCU、ADC0832 数模混合），另含 74HC138、74HC595 扩展案例（3-8 译码器 / 8 位移位寄存器 + TMU 时序 + 虚拟 ATE）。当问题涉及 SMU/DPS/PPMU/BPMU/RVS/TMU/AWG/DGT/CBIT 等测试资源、开短路(OS)/漏电流(IIL/IIH)/VOH/VOL/IDD 等直流参数测试、Pattern 与 Timing 及 PinLevel 功能测试、FVMV/FVMI/FIMV/FIMI/FNMV 测量模式、ATE 工程文件（.job/.tmf/.sig/.grp/.res/.tim/.pat/Test.cpp）、或上述六款芯片的测试开发、限值设定与排错时使用。也适用于集成电路测试课程的复习、答疑、作业与实训。
+description: 集成电路测试（ATE）知识库与实操手册，基于加速科技 ST2516/ST2500 测试平台与六个实训案例（CD4511 数字译码器、HK24C02 存储、LM358 运放、TPS73625 电源管理、HK32F031F4P6 MCU、ADC0832 数模混合），另含 74HC138、74HC595 扩展案例（3-8 译码器 / 8 位移位寄存器 + TMU 时序 + 虚拟 ATE）。当问题涉及 SMU/DPS/PPMU/BPMU/RVS/TMU/AWG/DGT/CBIT 等测试资源、开短路(OS)/漏电流(IIL/IIH)/VOH/VOL/IDD 等直流参数测试、运放参数（Vos/Ib/Ios/AOL/CMRR/PSRR/GBW/SR）与虚短虚断分析、Pattern 与 Timing 及 PinLevel 功能测试、FVMV/FVMI/FIMV/FIMI/FNMV 测量模式、ATE 工程文件（.job/.tmf/.sig/.grp/.res/.tim/.pat/Test.cpp）、或上述六款芯片的测试开发、限值设定与排错时使用。也适用于集成电路测试课程的复习、答疑、作业与实训。
 ---
 
 # 集成电路测试知识库（ATE / 加速科技 ST2516·ST2500）
@@ -14,7 +14,7 @@ description: 集成电路测试（ATE）知识库与实操手册，基于加速�
 | 层 | 位置 | 是什么 |
 |---|---|---|
 | **书** | `zh-CN/` | 28 章的开放教材，按「跟着一颗芯片走」的顺序组织，适合顺着读、也适合直接回答概念与流程问题 |
-| **笔记** | `notes/` | 27 篇逐条整理的资料（约 85 万字节），表格密集、含页码出处，适合查具体字段、限值、代码数值 |
+| **笔记** | `notes/` | 28 篇逐条整理的资料（约 87 万字节），表格密集、含页码出处，适合查具体字段、限值、代码数值 |
 
 **所有内容都在本技能目录下的相对路径里**，无需联网。用 `read`/`grep` 直接读；文件是中文 Markdown。
 
@@ -25,6 +25,7 @@ description: 集成电路测试（ATE）知识库与实操手册，基于加速�
 | 概念/术语不懂（含 **SMU**、PPMU、BPMU、DPS、SBIN/HBIN、WFC…） | `notes/01-理论基础/1.4-术语速查表（含SMU详解）.md` |
 | 想看「这本书怎么讲」，或要一条完整的解释脉络 | `zh-CN/README.md`（目录）→ 对应章节 |
 | 直流参数测试（OS、IIL/IIH、IDD、VOH/VOL、VIH/VIL）原理与方法 | `notes/01-理论基础/1.2-直流参数测试原理与方法.md` |
+| 运放原理与参数（Vos/Ib/Ios/AOL/CMRR/PSRR/GBW/SR、虚短虚断、UA741/LM358） | `notes/01-理论基础/1.5-运算放大器原理与模拟参数测试.md` |
 | 交流参数 / 功能测试（Pattern、Timing、Strobe、PinLevel） | `notes/01-理论基础/1.3-交流参数测试与功能测试原理.md` |
 | 产业背景、CP/FT 流程、测试程序开发流程 | `notes/01-理论基础/1.1-半导体产业与测试概论.md` |
 | 测试机硬件、板卡、资源规格、通道编号、校准 | `notes/02-测试机与硬件资源/2.1-ST2500测试平台硬件总览.md` |
