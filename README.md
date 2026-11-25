@@ -11,6 +11,8 @@
 ![Language](https://img.shields.io/badge/language-zh--CN-red.svg)
 [![Contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
+🌐 **简体中文** ｜ [English](README.en.md)
+
 📖 **开始读** → [全书目录](zh-CN/README.md)　｜　🗂 **深度笔记** → [notes/](notes/)　｜　🤖 **装成 AI 技能** → [INSTALL.md](INSTALL.md)
 
 </div>
